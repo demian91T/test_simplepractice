@@ -8,6 +8,10 @@ class BasePage
         @wait = Selenium::WebDriver::Wait.new(timeout: timeout)
     end
 
+    def find(by, selector)
+        wait.until {driver.find_element(by, selector)}
+    end
+
     def go_to_url(url)
         driver.get(url)
     end    
