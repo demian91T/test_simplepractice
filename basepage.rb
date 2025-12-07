@@ -37,4 +37,13 @@ class BasePage
             false
         end
     end
+
+    def text_exists_in?(by, selector, expected_text)
+        begin
+            element = wait.until { driver.find_element(by, selector) }
+            element.text.include?(expected_text)
+        rescue Selenium::WebDriver::Error::TimeoutError
+            false
+        end
+    end
 end
